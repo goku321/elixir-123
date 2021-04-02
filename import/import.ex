@@ -1,4 +1,5 @@
 defmodule ImportExample do
+  # import a module using import keyword.
   import IO
   def addWithTwo(a) do
     sum(a)
