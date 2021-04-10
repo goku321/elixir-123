@@ -11,6 +11,8 @@ defmodule Server do
 
   @doc """
   send_msg sends a message to server process.
+  server is the pid of the server process.
+  receive blocks until a message is received in the mailbox.
   """
   def send_msg(server, message) do
     send(server, {self(), message})
