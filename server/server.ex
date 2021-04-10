@@ -6,7 +6,7 @@ defmodule Server do
   start creates a separate light-weight process and calls loop inside it.
   """
   def start() do
-    spawn(fn -> loop end)
+    spawn(fn -> loop() end)
   end
 
   @doc """
@@ -20,9 +20,6 @@ defmodule Server do
     end
   end
 
-  @doc """
-  loop listens for new messages indefinitely.
-  """
   defp loop() do
     receive do
       {caller, msg} ->
