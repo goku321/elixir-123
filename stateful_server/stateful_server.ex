@@ -1,4 +1,7 @@
 defmodule Calculator do
+  @doc """
+  Spawns a server with initial state of 0
+  """
   def start do
     initial_value = 0
     spawn(fn -> loop(initial_value) end)
@@ -8,7 +11,7 @@ defmodule Calculator do
     new_value =
       receive do
         {:value, caller} ->
-          send(caller, current_value)
+          send(caller, {:response, current_value})
           current_value
 
         {:add, value} -> current_value + value
