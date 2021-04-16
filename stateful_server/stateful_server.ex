@@ -27,6 +27,9 @@ defmodule Calculator do
     loop(new_value)
   end
 
+  @doc """
+  Returns the current value.
+  """
   def value(server_pid) do
     send(server_pid, {:value, self()})
     receive do
@@ -35,6 +38,7 @@ defmodule Calculator do
     end
   end
 
+  # Other client facing methods used to operate on the value.
   def add(server_pid, value), do: send(server_pid, {:add, value})
   def sub(server_pid, value), do: send(server_pid, {:sub, value})
   def mul(server_pid, value), do: send(server_pid, {:mul, value})
