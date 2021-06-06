@@ -11,4 +11,13 @@ defmodule CaptureOperator do
     p = &(IO.puts/1)
     p.(x)
   end
+
+  def update_name(m, val) do
+    # usage 3 - capturing a function after fixing its arguments.
+    # &1 and &2 are placeholders for arguments.
+    # second argument to put (key) will always be fixed
+    # so we can skip it while calling updater function.
+    updater = &Map.put(&1, :name, &2)
+    updater.(m, val)
+  end
 end
