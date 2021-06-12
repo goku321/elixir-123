@@ -1,4 +1,5 @@
 defmodule PatterMatching do
+  # pattern match a return type.
   def example1 do
     # var will be assigned a map only if return_map returns
     # a map, otherwise an error will be thrown.
@@ -11,6 +12,16 @@ defmodule PatterMatching do
     # returns a map.
     not_map = %{} = return_number()
     not_map
+  end
+
+  # pattern match a key inside a map.
+  def example3 do
+    x = 1
+    # this says: map returned by calling return_map should have
+    # a key :a with a value 1.
+    # note: replacing x with a constant won't work.
+    match = %{a: ^x} = return_map()
+    match
   end
 
   defp return_map do
