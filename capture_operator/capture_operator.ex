@@ -12,6 +12,11 @@ defmodule CaptureOperator do
     p.(x)
   end
 
+  def print_a_b(a, b) do
+    IO.puts(a)
+    IO.puts(b)
+  end
+
   def update_name(m, val) do
     # usage 3 - capturing a function after fixing its arguments.
     # &1 and &2 are placeholders for arguments.
@@ -19,5 +24,12 @@ defmodule CaptureOperator do
     # so we can skip it while calling updater function.
     updater = &Map.put(&1, :name, &2)
     updater.(m, val)
+  end
+
+  def change_order(a, b) do
+    # usage 4 - change the order of passed arguments using
+    # arguments placeholders.
+    x = &print_a_b(&2, &1)
+    x.(a, b)
   end
 end
