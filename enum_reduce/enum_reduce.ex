@@ -1,0 +1,2 @@
+defmodule EnumReduce do
+end
